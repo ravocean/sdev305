@@ -11,106 +11,133 @@ This website is the resources for St. James Outreach
 <?php
 
 // Include header file
-include ('includes/head.html');
+include('includes/head.html');
 
 ?>
-<body class="container">
+<body>
 
-<!--NAV BAR-->
-<div class="w3-top mb-4">
-    <div class="w3-bar w3-black w3-card w3-content band shadow-lg bg-white rounded">
-        <!-- Home tab -->
-        <a
-                class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
-                href="javascript:void(0)"
-                onclick="myFunction()"
-                title="Toggle Navigation Menu"
-        ><i class="fa fa-bars"></i
-        ></a>
-        <a href="index.php" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+<!--NAVBAR-->
+<nav class="navbar navbar-dark bg-dark navbar-expand-md">
+    <div class="container">
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#myTogglerNav"
+                aria-controls="myTogglerNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <div class="w3-dropdown-hover w3-hide-small ">
-            <button class="w3-padding-large w3-button" title="More">
-                OTHER RESOURCES <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                <a
-                        href="https://www.211.org/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="w3-bar-item w3-button"
-                >211.org</a
-                >
-                <a
-                        href="http://kentmethodist.com/assistance"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="w3-bar-item w3-button"
-                >Kent United Methodist</a
-                >
+        <a href="index.php" class="navbar-brand pull-right">Kent Outreach</a>
+        <div class="collapse navbar-collapse" id="myTogglerNav">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="index.php">Home</a>
+            </div><!-- navbar -->
+        </div>
+    </div><!-- container -->
+</nav><!-- nav -->
+
+<div class="pageStyle container p-3 mb-5 bg-white rounded">
+    <div class="w3-container w3-content w3-center w3-padding-64 band shadow-lg p-3 mb-5 bg-white rounded">
+        <h2 class="w3-wide w3-center">COMMUNITY RESOURCES</h2>
+        <span class="w3-opacity w3-center w3-large">
+            <i>Additional help can be found below...</i>
+        </span>
+    </div>
+    <div class="w3-container w3-content w3-center w3-padding-64 band shadow-lg p-3 mb-5 rounded">
+        <!--LINKS AND DESCRIPTION SECTION-->
+        <!--<div class="w3-container w3-theme" id="myHeader">-->
+            <div class="w3-theme w3-container w3-center d-flex justify-content-center container">
+                    <div class="row">
+
+                        <div class="col-md-6 ">
+
+                            <div class="card form-group cardHeight">
+                                <a href="https://www.211.org" target="_blank"><img class="mt-5 flex-margin" src="images/211-logo.svg" alt="211"
+                                                                               style="width:220px; height:120px;"></a>
+
+                            </div>
+                            <div class="card form-group cardHeight">
+                            <a href="http://kentmethodist.com/assistance" target="_blank"><img class="mt-4 flex-margin" src="images/KentUMC-logo.png"
+                                                                                               alt="Kent Methodist"
+                                                                                               style="width:360px; height:140px;"></a>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="card form-group cardHeight">
+                            <a href="https://stjameskent.org/" target="_blank"><img class="mt-4 flex-margin" src="images/stjamesresourcelogo.png"
+                                                                                               alt="Kent Methodist"
+                                                                                               style="width:280px; height:140px;"></a>
+
+                            </div>
+
+                            <div class="card form-group cardHeight">
+                            <a href="https://www.dshs.wa.gov/" target="_blank"><img class="mt-4 flex-margin" src="images/dshs.png"
+                                                                                               alt="Kent Methodist"
+                                                                                               style="width:280px; height:160px;"></a>
+
+                            </div>
+                        </div>
+
+                    </div>
             </div>
-        </div>
+
     </div>
-</div>
+    <!-- The Footer Section -->
+    <div class="w3-container w3-content w3-center w3-padding-64 shadow-lg mb-5 bg-white w3-black rounded" id="contact">
+        <!-- Footer -->
+        <footer>
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4 footer-about">
+                            <h3 class="mb-5">Hours</h3>
 
-<div class="w3-black w3-container w3-content w3-center w3-padding-64 band shadow-lg p-3 mb-5 bg-white rounded">
-    <h2 class="w3-wide w3-center">COMMUNITY RESOURCES</h2>
-</div>
+                            <p><i class="fa fa-calendar contactFont"> </i>
+                                Monday: 1:00pm to 4:00pm</p>
+                            <p>Tuesday: 9:00am to 12:00 noon</p>
+                            <p>Wednesday: 1:00pm to 4:00pm</p>
 
-<!--LINKS AND DESCRIPTION SECTION-->
-<div class="w3-container w3-theme w3-padding-32" id="myHeader">
-    <div class="w3-center">
-        <h1 class="w3-xxlarge">More help is available...</h1><br/><br/>
-        <div class="w3-padding-32 w3-center">
-            <a href="https://www.211.org" target="_blank"><img src="images/211-logo.svg" alt="211" style="width:150px; height:100px;"></a><br><br>
-            <a href="http://kentmethodist.com/assistance" target="_blank"><img src="images/KentUMC-logo.png" alt="Kent Methodist" style="width:340px; height:130px;"></a><br><br>
-         <!-- <button class="w3-button w3-xlarge w3-theme-light" onclick="location.href='http://kentmethodist.com/assistance'" style="font-weight:900;">Kent United Methodist Church</button> -->
-        </div>
-    </div>
-</div>
+                        </div>
 
-<!-- Contact Section -->
-<div class="w3-black w3-container w3-content w3-center w3-padding-32 band shadow-lg p-3 mb-3 bg-white rounded" style="height:100px;">
-    <h2 class="w3-wide w3-center">CONTACT US</h2>
-</div>
+                        <div class="col-md-4 col-lg-4 footer-contact">
+                            <h3 class="mb-5">Contacts</h3>
+                            <!-- Google Map insertion -->
+                            <p><i class="fa fa-map-marker" id="google"></i>
+                                <a
+                                        href="https://goo.gl/maps/UEuiGpguDtXozPjN7"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                >24447 94th Ave S, Kent, WA, 98030 </a></p>
+                            <p><i class="fa fa-phone contactFont"></i> Phone:<a href="tel:253-852-4100">253-852-4100</a></p>
+                            <p><i class="fa fa-envelope contactFont"> </i> Email:mail@mail.com</p>
+                        </div>
 
-<!--
-<div class="w3-container w3-content w3-padding-64" id="contact">
--->
-    <div class="w3-row w3-padding-32 w3-center">
-    <!--Contact Left Side-->
-    <div class="w3-col m6 w3-large w3-margin-bottom">
-        <!-- Google Map insertion-->
-        <i class="fa fa-map-marker" id="google"></i>
-        <a
-                href="https://goo.gl/maps/UEuiGpguDtXozPjN7"
-                target="_blank"
-                rel="noopener noreferrer"
-        >
-            24447 94th Ave S, Kent, WA, 98030 </a
-        ><br/>
-        <i class="fa fa-phone contactFont"></i> Phone:
-        253-852-4100<br/>
-        <i class="fa fa-envelope contactFont"></i> Email:
-        mail@mail.com<br/>
-    </div>
-
-    <!--Contact Right Side-->
-    <div class="w3-col m6 w3-large w3-margin-bottom">
-        <i class="fa fa-calendar contactFont"></i>
-        Monday: 1:00pm to 4:00pm<br/>
-        Tuesday: 9:00am to 12:00 noon<br/>
-        Wednesday: 1:00pm to 4:00pm<br/>
-    </div>
-</div>
-
-    <div class="mapouter w3-center w3-content ">
-        <div class="gmap_canvas">
-            <iframe width="400" height="200" id="gmap_canvas"
-                    src="https://maps.google.com/maps?q=24447%2094th%20Ave%20S%2C%20Kent%2C%20WA%2C%2098030&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    ></iframe>
-        </div>
+                        <div class="col-md-4 col-lg-3 footer-location">
+                            <h3 class="mb-3">Our Location</h3>
+                            <!--Google map-->
+                            <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 200px">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10806.156076848025!2d-122.216393!3d47.381915!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54905eaea6606e61%3A0x206815f453c0e48b!2s24447%2094th%20Ave%20S%2C%20Kent%2C%20WA%2098030!5e0!3m2!1sen!2sus!4v1605391186289!5m2!1sen!2sus"
+                                        width="300" height="150" style="border:0;" allowfullscreen="" aria-hidden="false"
+                                        tabindex="0"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7 footer-menu">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
+
+</div>
 </body>
 </html>
