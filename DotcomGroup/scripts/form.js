@@ -11,44 +11,59 @@ form.js validates the form and adds text when you click the checkBox
 
 */
 
+window.onload = addressHide();
+document.getElementById("application").onsubmit = validateZip;
 
-document.getElementById("application").onsubmit = validate;
+$(function () {
 
+    $('#phone').keydown(function (e) {
+        var key = e.charCode || e.keyCode || 0;
+        $text = $(this);
+        if (key !== 8 && key !== 9) {
+            if ($text.val().length === 3) {
+                $text.val($text.val() + '-');
+            }
+            if ($text.val().length === 7) {
+                $text.val($text.val() + '-');
+            }
+
+        }
+
+        return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));
+    })
+});
 
 //validate the form
 function validate() {
     //create a flag variable
     let isValid = true;
-	
-	//validate first name
+
+    //validate first name
     let first = document.getElementById("fname").value;
     let errFname = document.getElementById("error-fname");
     if (first === "") {
         errFname.className = "errors";
         isValid = false;
-    }
-    else {
+    } else {
         errFname.className = "hidden";
     }
     // validate last name
     let last = document.getElementById("lname").value;
     let errLname = document.getElementById("error-lname");
-    if(last === "") {
+    if (last === "") {
         errLname.className = "errors";
         isValid = false;
-    }
-    else {
+    } else {
         errLname.className = "hidden";
     }
-	//validate email
+    //validate email
     let phone = document.getElementById("phone").value;
     let email = document.getElementById("inputEmail").value;
     let errContact = document.getElementById("error-contact");
-    if(phone === "" && email === "") {
+    if (phone === "" && email === "") {
         errContact.className = "errors";
         isValid = false;
-    }
-    else {
+    } else {
         errContact.className = "hidden";
 
     }
@@ -56,32 +71,67 @@ function validate() {
     //validate to see if assistance was checked
     let assistance = document.getElementsByName("assistance[]");
     let count = 0;
-    for(let i=0; i < assistance.length; i++) {
+    for (let i = 0; i < assistance.length; i++) {
         if (assistance[i].checked) {
             count++;
         }
     }
     let errAssistance = document.getElementById("error-assistance");
-    if (count === 0) {
+    let otherCheckBox = document.getElementById('other');
+    if (count === 0 && (otherCheckBox.checked === false)) {
         errAssistance.className = "errors";
         isValid = false;
-    }
-    else {
+    } else {
         errAssistance.className = "hidden";
     }
-	
-	//validate to see if Checkbox is checked
-	let checkBox = document.getElementById("gridCheck");
-	let errCheck = document.getElementById ("error-check");
-	if (checkBox.checked === false) {
-		errCheck.className = "errors";
-		isValid = false;
-	}
-	else {
-		errCheck.className = "hidden";
-	}
-		
+
+    //validate to see if Checkbox is checked
+    let checkBox = document.getElementById("gridCheck");
+    let errCheck = document.getElementById("error-check");
+    if (checkBox.checked === false) {
+        errCheck.className = "errors";
+        isValid = false;
+    } else {
+        errCheck.className = "hidden";
+    }
+
+    //validate zip is not null
+    let zip = document.getElementById("inputZip").value;
+    let zipError = document.getElementById("error-zip");
+    if (window.location.hash !== '#residency') {
+        if (zip === "") {
+            zipError.className = "errors";
+            isValid = false;
+        } else {
+            zipError.className = "hidden";
+        }
+    }
+    //validate city is not empty
+    let city = document.getElementById("inputCity").value;
+    let cityError = document.getElementById("error-city");
+    if (window.location.hash !== '#residency') {
+        if (city === "") {
+            cityError.className = "errors";
+            isValid = false;
+        } else {
+            cityError.className = "hidden";
+        }
+    }
+
+    //validate Address is not empty
+    let address = document.getElementById("inputAddress").value;
+    let addressError = document.getElementById("error-address");
+    if (window.location.hash !== '#residency') {
+        if (address === "") {
+            addressError.className = "errors";
+            isValid = false;
+        } else {
+            addressError.className = "hidden";
+        }
+    }
+
     return isValid;
+
 }
 
 //function utility displays extra information about utility when checkBox is checked 
@@ -90,7 +140,7 @@ function utility() {
     // Get the output text
     let text = document.getElementById("util-info");
     // If the checkbox is checked, display the output text
-    if (checkBox.checked === true){
+    if (checkBox.checked === true) {
         text.style.display = "block";
     } else {
         text.style.display = "none";
@@ -106,7 +156,7 @@ function rentInfo() {
     let text = document.getElementById("rent-info");
 
     // If the checkbox is checked, display the output text
-    if (checkBox.checked === true){
+    if (checkBox.checked === true) {
         text.style.display = "block";
     } else {
         text.style.display = "none";
@@ -121,7 +171,7 @@ function gasInfo() {
     let text = document.getElementById("gas-info");
 
     // If the checkbox is checked, display the output text
-    if (checkBox.checked === true){
+    if (checkBox.checked === true) {
         text.style.display = "block";
     } else {
         text.style.display = "none";
@@ -136,7 +186,7 @@ function thriftInfo() {
     let text = document.getElementById("thrift-info");
 
     // If the checkbox is checked, display the output text
-    if (checkBox.checked === true){
+    if (checkBox.checked === true) {
         text.style.display = "block";
     } else {
         text.style.display = "none";
@@ -151,16 +201,117 @@ function driverInfo() {
     let text = document.getElementById("id-info");
 
     // If the checkbox is checked, display the output text
-    if (checkBox.checked === true){
+    if (checkBox.checked === true) {
         text.style.display = "block";
     } else {
         text.style.display = "none";
     }
+}
 
+function otherChecked() {
+    let checkBox = document.getElementById("other");
+    let text = document.getElementById("otherText");
+    let textTwo = document.getElementById("otherTextInput")
+    if (checkBox.checked === true) {
+        text.style.display = "block";
+        textTwo.style.display = "block";
+    } else {
+        document.getElementById("otherTextInput").value = "";
+        text.style.display = "none";
+        textTwo.style.display = "none";
+    }
+}
 
+function addressHide() {
+    if (window.location.hash === '#residency') {
+        document.getElementById("inputAddress").disabled = "disabled";
+        document.getElementById("inputAddress").placeholder = "Residency is not required";
+        document.getElementById("inputAddress2").disabled = "disabled";
+        document.getElementById("inputAddress2").placeholder = "";
+        document.getElementById("inputCity").disabled = "disabled";
+        document.getElementById("inputZip").disabled = "disabled";
+
+    }
 
 }
 
+function hideSummary() {
+    document.getElementById("summary").classList.add("d-none");
+    document.getElementById("formSubmission").classList.remove("d-none");
+}
 
 
+function showSummary() {
+
+    if (validate()) {
+        document.getElementById("summary").classList.remove("d-none");
+        document.getElementById("formSubmission").classList.add("d-none");
+
+        let fname = document.getElementById("fname").value;
+        let lname = document.getElementById("lname").value;
+        let phone = document.getElementById("phone").value;
+        let email = document.getElementById("inputEmail").value;
+        let addressOne = document.getElementById("inputAddress").value;
+        let addressTwo = document.getElementById("inputAddress2").value;
+        let city = document.getElementById("inputCity").value;
+        let zip = document.getElementById("inputZip").value;
+        let comments = document.getElementById("commentBox").value;
+        let other = document.getElementById("otherTextInput").value;
+        let assistance = document.getElementsByName("assistance[]");
+        let assistanceArray = [];
+        for (let i = 0; i < assistance.length; i++) {
+            if (assistance[i].checked) {
+                assistanceArray.push(" " + assistance[i].value);
+            }
+        }
+
+        document.getElementById("fName-sum").innerHTML = fname;
+        document.getElementById("lName-sum").innerHTML = lname;
+        document.getElementById("phone-sum").innerHTML = phone;
+        document.getElementById("inputEmail-sum").innerHTML = email;
+        document.getElementById("inputAddress-sum").innerHTML = addressOne;
+        document.getElementById("inputAddress2-sum").innerHTML = addressTwo;
+        document.getElementById("inputCity-sum").innerHTML = city;
+        document.getElementById("inputZip-sum").innerHTML = zip;
+        document.getElementById("assistance-sum").innerHTML = assistanceArray;
+        document.getElementById("commentBox-sum").innerHTML = comments;
+        document.getElementById("otherTextInput-sum").innerHTML = other;
+    }
+
+}
+
+function validateZip() {
+    if (document.getElementById("inputZip").disabled !== "disabled") {
+        let zip = document.getElementById("inputZip").value;
+        if (zip == "98030") {
+            ("Correct Zip code");
+            return true;
+        } else if (zip == "98058") {
+            ("Correct Zip code");
+            return true;
+        } else if (zip == "98031") {
+            ("Correct Zip code");
+            return true;
+        } else if (zip == "98032") {
+            ("Correct Zip code");
+            return true;
+        } else if (zip == "98042") {
+            ("Correct Zip code");
+            return true;
+        } else if (zip == "") {
+            return true;
+        } else {
+            ("incorrect zip code");
+            let choice = confirm("Sorry, you seem to be out of our reach. You will now be redirected to see additional resources...");
+            if(choice == true) {
+                window.location = "../resources.php";
+            }
+            return false;
+        }
+    } else {
+        return true;
+    }
+
+
+}
 
