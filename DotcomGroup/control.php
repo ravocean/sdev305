@@ -12,84 +12,34 @@ This website is the homepage for St. James Outreach
 <?php
 
 // Include header file
-include ('includes/head.html');
+include("includes/head.html");
+include("includes/creds.php");
 
 ?>
 
 <!-- Beginning of the main body -->
-<body class="container">
+<body>
 
-<!-- Navbar -->
-<div class="w3-top ">
-    <div class="w3-center  w3-bar w3-black w3-card">
-        <!-- Home tab -->
-        <a
-                class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
-                href="javascript:void(0)"
-                onclick="myFunction()"
-                title="Toggle Navigation Menu"
-        ><i class="fa fa-bars"></i
-        ></a>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large"
-        >HOME</a>
-        <!-- Assistance tab -->
-        <a
-                href="#assistance"
-                class="w3-bar-item w3-button w3-padding-large w3-hide-small"
-        >ASSISTANCE</a>
-        <!-- Contact tab -->
-        <a
-                href="#contact"
-                class="w3-bar-item w3-button w3-padding-large w3-hide-small"
-        >CONTACT</a>
-        <div class="w3-dropdown-hover w3-hide-small ">
-            <!-- Other Resources tab -->
-            <button class="w3-padding-large w3-button" title="More">
-                OTHER RESOURCES <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                <a
-                        href="https://www.211.org/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="w3-bar-item w3-button"
-                >211.ORG</a>
-                <a
-                        href="http://kentmethodist.com/assistance"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="w3-bar-item w3-button"
-                >Kent Methodist</a>
-            </div>
+
+<!--NAVBAR-->
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+    <div class="container">
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#myTogglerNav"
+                aria-controls="myTogglerNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a href="index.php" class="navbar-brand">Kent Outreach</a>
+        <div class="collapse navbar-collapse" id="myTogglerNav">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="index.php">Home</a>
+                <a class="nav-item nav-link active" href="control.php">Admin Page</a>
+            </div><!-- navbar -->
         </div>
-    </div>
-</div>
-<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
-<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top navbarStyle">
-
-    <a
-            href="#assistance"
-            class="w3-bar-item w3-button w3-padding-large"
-            onclick="myFunction()"
-    >ASSISTANCE</a
-    >
-
-    <a
-            href="resources.php"
-            class="w3-bar-item w3-button w3-padding-large"
-            onclick="myFunction()"
-    >RESOURCES</a
-    >
-
-    <a
-            href="#contact"
-            class="w3-bar-item w3-button w3-padding-large"
-            onclick="myFunction()"
-    >CONTACT</a
-    >
-</div>
-
-<div class="container">
+    </div><!-- container -->
+</nav><!-- nav -->
 
     <div class="w3-content pageStyle">
         <!-- The Application Form Section -->
@@ -105,77 +55,82 @@ include ('includes/head.html');
 
     <!--TABLE-->
     <div class="w3-content pageStyle">
-        <div class="w3-container w3-content w3-center w3-padding-64 band shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="band shadow-lg p-3 mb-5 bg-white rounded table-responsive">
 
-        <table class="table display" id="order-table">
-            <thead class="thead-light">
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Contact</th>
-                <th scope="col">Address</th>
-                <th scope="col">Message/File</th>
-                <th scope="col">Needs Help With</th>
-            </tr>
-            </thead>
+            <table class="table display table-hover" id="user-table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Help List</th>
+                    <th scope="col">Comments and Attachments</th>
+                </tr>
+                </thead>
+                <tbody>
 
+                <?php
+                // Select column data from the database table
+                $sql = "SELECT `ID`, `Date`, `First Name`, `Last Name`, `Phone`, `Email`, 
+                        `Address`, `Adress 2`, `City`, `ZIP`, `Help List`, `Comments and Attachments` 
+                        from outreach_form";
 
-            <tbody>
-            <tr>
-                <th scope="row">Mark Zuckerberg</th>
-                <td>253-554-5555 <br> mark@nosebook.com</td>
-                <td>4254 Bookface Dr, Zuckland, CA, 99004</td>
-                <td>Come back to Facebook</td>
-                <td>Moving TikTokers to Reels</td>
-            </tr>
-            <tr>
-                <th scope="row">Tim Cook</th>
-                <td>452-554-5555 <br> timmy@aaple.com</td>
-                <td>7441 Farmers Blvd, Cookland, CA, 99014</td>
-                <td>Another year - another iPhone</td>
-                <td>iPhone chargers</td>
-            </tr>
-            <tr>
-                <th scope="row">Bill Gates</th>
-                <td>441-554-5555 <br> doors@billy.com</td>
-                <td>777 Dicks Burger St, Seattle, WA, 99011</td>
-                <td>5G doesn't cause the virus</td>
-                <td>Clean water</td>
-            </tr>
-            </tbody>
-        </table>
+                $result = $conn->query($sql);
+                // Database content must contain at least one row
+                if ($result->num_rows > 0) {
+                    // Print data while this condition is true
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr><td>" . $row["ID"]
+                            . "</td><td>" . $row["Date"]
+                            //. "</td><td>" . $row["FirstName"]." ".$row["LastName"]
+                            . "</td><td>" . $row["First Name"]
+                            . "</td><td>" . $row["Last Name"]
+                            . "</td><td>" . $row["Phone"]
+                            . "</td><td>" . $row["Email"]
+                            . "</td><td>" . $row["Address"]." ".$row["Address 2"]." ".$row["City"].", ".$row["ZIP"]
+                            . "</td><td>" . $row["Help List"]
+                            . "</td><td>" . $row["Comments and Attachments"]
+                            . "</td> </tr>";
+                    }
+                } else {
+                    echo "0 Result";
+                }
+                ?>
+
+                </tbody>
+            </table>
         </div>
     </div>
 
-</div>
 
-    <!-- Footer -->
-    <footer
-            class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge"
-    >
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-        <i class="fa fa-instagram w3-hover-opacity"></i>
-        <p class="w3-medium">Made by Dotcom</p>
-    </footer>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"
-    ></script>
-    <script
-            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-            crossorigin="anonymous"
-    ></script>
-    <script
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-            crossorigin="anonymous"
-    ></script>
-    <script src="scripts/index.js"></script>
-    <script src="scripts/zipCode.js"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"
+></script>
+<!-- jQuery Data Table -->
+<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script>$('#user-table').DataTable();</script>
+<script src="scripts/scripts.js"></script>
+<script src="scripts/index.js"></script>
+<script src="scripts/zipCode.js"></script>
 </div>
 </body>
 </html>

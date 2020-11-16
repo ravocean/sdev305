@@ -6,23 +6,18 @@ Tiffany Welo
 
 Team Dotcom
 11/1/20
-This website is to let the user know that they submitted the form and emails the users information to the client
+This website is the resources for St. James Outreach
 -->
 <?php
-//if(empty($_POST)) {
- //   header("location: index.php");
-  //  return;
-//}
+
 // Include header file
-include("includes/head.html");
-include("includes/creds.php");
+include('includes/head.html');
 
 ?>
-
 <body>
 
 <!--NAVBAR-->
-<nav class="navbar navbar-dark bg-dark navbar-expand-md">
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
     <div class="container">
         <button class="navbar-toggler" type="button"
                 data-toggle="collapse" data-target="#myTogglerNav"
@@ -31,7 +26,7 @@ include("includes/creds.php");
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <a href="index.php" class="navbar-brand pull-right">Kent Outreach</a>
+        <a href="index.php" class="navbar-brand">Kent Outreach</a>
         <div class="collapse navbar-collapse" id="myTogglerNav">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="index.php">Home</a>
@@ -40,24 +35,64 @@ include("includes/creds.php");
     </div><!-- container -->
 </nav><!-- nav -->
 
-<div class="w3-content pageStyle">
-
-<!-- Note to user thanking them for submitting form -->
-<div class="w3-content pageStyle">
-
+<div class="pageStyle container p-3 mb-5 bg-white rounded">
     <div class="w3-container w3-content w3-center w3-padding-64 band shadow-lg p-3 mb-5 bg-white rounded">
         <img src="images/stjameslogoreal.png" class="img-fluid" alt="St. James logo">
     </div>
 
-    <div class="w3-container w3-content w3-center w3-padding-64 band shadow-lg p-3 mb-5 bg-white rounded" id="main">
+    <div class="w3-container w3-content w3-center w3-padding-64 band shadow-lg p-3 mb-5 rounded">
+        <!--LINKS AND DESCRIPTION SECTION-->
+        <div class="w3-container w3-theme w3-padding-32" id="myHeader">
+            <div class="text-center">
+                <h2 class="mb-5">You Can Help Us Help Others</h2>
+                <hr>
+                <div class="container">
+                    <!-- Example row of columns -->
+                    <div class="row">
+                        <div class="col-md-4 text-left">
+                            <h3 class="mb-3">Donations</h3>
 
-        <h2>Thank you for your request. We'll be in touch soon!</h2> <br>
-        <div>
-            <h4>Please <a href="resources.php"><u>click here</u></a> to see the other resources provided!
-            </h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-3"><strong>Financial Donation</strong><br>
+                                    <a href="http://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H9ERUZQAKHFUA"
+                                       target="_blank"><img src="images/paypalicon.png" class="" alt="PayPal"/><u>PayPal Link</u></a>
 
+                                </li>
+
+                                <li class="mb-3"><strong>Supply Donations</strong><br>
+                                    Canned goods, non-perishables, diapers, personal/feminine hygiene items</li>
+                            </ul>
+
+                        </div>
+
+                        <div class="col-md-4 text-left">
+                            <h3 class="mb-3">Volunteer</h3>
+                            <ul class="list-unstyled">
+                                <li class="mb-3"><strong>Thrift Shop volunteers</strong><br>
+                                    <i class="fa fa-envelope contactFont"> </i>Email <a href="mailto:jacinta@stjameskent.org"><u>jacinta@stjameskent.org</u></a>
+                                    for more information.</li>
+                                <li class="mb-3"><strong>Outreach office phone volunteers</strong><br>
+                                    <i class="fa fa-envelope contactFont"> </i>Email <a href="mailto:postrander@stjameskent.org"><u>postrander@stjameskent.org</u></a>
+                                    for more information.</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-4 text-left">
+                            <h3 class="mb-3">Seasonal Opportunities</h3>
+                            <ul class="list-unstyled">
+                                <li class="mb-3"><strong>Winter Drive </strong>(gloves, socks, hand-warmers)</li>
+                                <li class="mb-3"><strong>Back-to-school Drive </strong>(backpacks and school supplies)</li>
+                                <li class="mb-3"><strong>Angel Tree </strong>(Christmas gifts)</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div> <!-- /container -->
+            </div>
         </div>
     </div>
+
 
     <!-- The Footer Section -->
     <div class="w3-container w3-content w3-center w3-padding-64 shadow-lg mb-5 bg-white w3-black rounded" id="contact">
@@ -111,87 +146,16 @@ include("includes/creds.php");
             </div>
         </footer>
     </div>
+
+
+<!--   
+    <footer
+        class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge"
+    >
+        <i class="fa fa-facebook-official w3-hover-opacity"></i>
+        <i class="fa fa-instagram w3-hover-opacity"></i>
+        <p class="w3-medium">Made by Dotcom</p>
+    </footer>-->
 </div>
-</div>
-<?php
-
-
-//get data
-
-$fname = $_POST['fname'];
-$lname = $_POST['lname'];
-$phone = $_POST['phone'];
-$email = $_POST['emailFrom'];
-$addressOne = $_POST['address'];
-$addressTwo = $_POST['addressTwo'];
-$city = $_POST['city'];
-$zip = $_POST['zip'];
-$assistance = implode(", ", $_POST['assistance']);
-$comment = $_POST['inComment'];
-$assistanceArray = $_POST['assistance'];
-$other = $_POST['otherTextInput'];
-if($other !== "") {
-    $assistanceMore = $assistance." Other: ".$other;
-}
-else {
-    $assistanceMore = $assistance;
-}
-
-
-
-// Send data to database
-$sql = "INSERT INTO outreach_form 
-        (`ID`, `Date`, `First Name`, `Last Name`, `Phone`, `Email`, `Address`, `Adress 2`, 
-        `City`, `ZIP`, `Help List`, `Comments and Attachments`) 
-        VALUES (NULL, CURRENT_TIMESTAMP(), '$fname', '$lname', '$phone', 
-        '$email', '$addressOne', '$addressTwo', '$city', '$zip', '$assistanceMore', '$comment');";
-
-$success = mysqli_query($conn, $sql);
-if (!$success) {
-    echo "<p>Something went wrong...</p>";
-}
-
-//format data to be more easily read
-
-$to = "jsestak2@mail.greenriver.edu";
-$subject = "Form completed";
-$message = "Form completed by: $fname $lname \r\n";
-$message .= "Phone: $phone\n";
-$message .= "Email: $email\n";
-$message .= "Address: $addressOne $addressTwo\n";
-$message .= "City: $city\n";
-$message .= "Zip: $zip \n\n";
-$message .= "Assistance Required: $assistance\n";
-$message .= "Other: $other\n";
-
-
-$message .= "Message: $comment";
-
-
-//email data
-$confirmEmail = "Thank you for submitting your form. Someone will email you shortly.";
-$confirmEmailSubject = "St.James Application";
-mail($to, $subject, $message);
-mail($email, $confirmEmailSubject, $confirmEmail);
-?>
-
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script
-        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"
-></script>
-<script
-        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"
-></script>
-<script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"
-></script>
 </body>
 </html>

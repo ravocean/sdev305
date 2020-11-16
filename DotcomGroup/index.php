@@ -13,81 +13,37 @@ This website is the homepage for St. James Outreach
 
 // Include header file
 include ('includes/head.html');
-
 ?>
 
 <!-- Beginning of the main body -->
-<body class="container">
+<body id="pageTop">
 
-<!-- Navbar -->
-<div class="w3-top ">
-    <div class="w3-center  w3-bar w3-black w3-card">
-        <!-- Home tab -->
-        <a
-                class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
-                href="javascript:void(0)"
-                onclick="myFunction()"
-                title="Toggle Navigation Menu"
-        ><i class="fa fa-bars"></i
-        ></a>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large"
-        >HOME</a>
-        <!-- Assistance tab -->
-        <a
-                href="#assistance"
-                class="w3-bar-item w3-button w3-padding-large w3-hide-small"
-        >ASSISTANCE</a>
-        <!-- Contact tab -->
-        <a
-                href="#contact"
-                class="w3-bar-item w3-button w3-padding-large w3-hide-small"
-        >CONTACT</a>
-        <div class="w3-dropdown-hover w3-hide-small ">
-            <!-- Other Resources tab -->
-            <button class="w3-padding-large w3-button" title="More">
-                OTHER RESOURCES <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                <a
-                        href="https://www.211.org/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="w3-bar-item w3-button"
-                >211.ORG</a>
-                <a
-                        href="http://kentmethodist.com/assistance"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="w3-bar-item w3-button"
-                >Kent Methodist</a>
-            </div>
+<!--NAVBAR-->
+<nav class="navbar navbar-dark bg-dark navbar-expand-md sticky-top">
+    <div class="container">
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#myTogglerNav"
+                aria-controls="myTogglerNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a href="#pageTop" class="navbar-brand">Kent Outreach</a>
+        <div class="collapse navbar-collapse" id="myTogglerNav">
+            <div class="navbar-nav">
+                <a href="#assistance" class="nav-item nav-link">ASSISTANCE</a>
+                <a href="#contact" class="nav-item nav-link">CONTACTS</a>
+                <a href="getinvolved.php" class="nav-item nav-link">GET INVOLVED</a>
+                <a href="resources.php" class="nav-item nav-link">RESOURCES</a>
+            </div><!-- navbar -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="control.php">Admin Page</a>
+                </li>
+            </ul>
         </div>
-    </div>
-</div>
-<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
-<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top navbarStyle">
-
-    <a
-            href="#assistance"
-            class="w3-bar-item w3-button w3-padding-large"
-            onclick="myFunction()"
-    >ASSISTANCE</a
-    >
-
-    <a
-            href="resources.php"
-            class="w3-bar-item w3-button w3-padding-large"
-            onclick="myFunction()"
-    >RESOURCES</a
-    >
-
-    <a
-            href="#contact"
-            class="w3-bar-item w3-button w3-padding-large"
-            onclick="myFunction()"
-    >CONTACT</a
-    >
-</div>
+    </div><!-- container -->
+</nav><!-- nav -->
 
 <!-- Page content -->
 <div class="w3-content pageStyle">
@@ -96,7 +52,7 @@ include ('includes/head.html');
     <div class="w3-container w3-content w3-center w3-padding-64 band shadow-lg p-3 mb-5 bg-white rounded">
 
         <!-- Welcome Message -->
-        <div class="w3-container w3-content w3-center w3-padding-64" id="welcomeMessage">
+        <div class="w3-container w3-content w3-center" id="welcomeMessage">
             <h1>St. James Outreach</h1>
         </div>
         <hr class="style13">
@@ -118,25 +74,26 @@ include ('includes/head.html');
 
 
     <!-- Seeking help section -->
-    <div id="assistance">
-    <div id="formDiv" class="w3-black w3-padding-64 seekingStyle mb-4 d-none">
-        <h1 class="w3-wide w3-center">SEEKING HELP?</h1>
-        <!-- Zipcode validation and submission -->
-        <p class="w3-opacity w3-center w3-large">
-            <i>Please enter your residential zip code to get started: </i>
-        </p>
-        <!-- Zipcode submit button form -->
-        <form class="w3-padding-small w3-center" id="zipForm" action="form.php">
-            <input id="zipCode" type="text" size="20" placeholder="Zip Code"/>
-            <button type="submit" class="btn btn-info w3-button" id="btn-zipCode">Begin</button>
-            <br>
+    <div id="assistance" class="mb-5">
+        <div id="formDiv" class="w3-center w3-black w3-padding-64 seekingStyle mb-4 d-none">
+            <h1 class="w3-wide w3-center">SEEKING HELP?</h1>
+            <!-- Zipcode validation and submission -->
+            <p class="w3-opacity w3-center w3-large">
+                <i>Please enter your residential zip code to get started: </i>
+            </p>
+            <!-- Zipcode submit button form -->
+            <form class="form-inline justify-content-center mb-3" id="zipForm" action="form.php">
+                <input id="zipCode" type="text" size="20" placeholder="Zip Code"/>
+                <button type="submit" class="btn btn-info w3-button" id="btn-zipCode">Begin</button>
+                <br>
+            </form>
             <a class="w3-opacity w3-padding-small w3-hover-opacity-off" href="form.php#residency" >
                 <i>I am currently without a residence</i>
             </a>
-        </form>
+        </div>
     </div>
 
-    <div id="nonformDiv" class="w3-black w3-padding-64 seekingStyle d-none">
+    <div id="nonformDiv" class="w3-black w3-padding-64 d-none">
         <h1 class="w3-wide w3-center">SEEKING HELP?</h1>
         <p class="w3-opacity w3-center w3-large">
             Please come back during our hours of operation to view our help forms, or please visit our <u>resource</u> page.
@@ -152,9 +109,7 @@ include ('includes/head.html');
 
 
     <!-- What we help with section -->
-    <div class="w3-container w3-content w3-center w3-padding-64 band shadow-lg p-3 mb-5 bg-white rounded">
-        <hr class="style13">
-        <br>
+    <div class="w3-container w3-content w3-center band shadow-lg p-3 mt-5 bg-white rounded">
         <h2 class="w3-wide w3-center">WHAT WE HELP WITH</h2>
         <div class="w3-row w3-padding-16">
             <p class="lead">
@@ -219,7 +174,7 @@ include ('includes/head.html');
                             <h4>More</h4><br>
                             <i class="fa fa-info-circle w3-margin-bottom w3-text-theme assistanceFont"></i>
                             <div class="m6 w3-large">
-                                <p>There are more resources available</p>
+                                <a class="dropdown-item" href="resources.php">There are more resources available</a>
                             </div>
                         </div>
                     </div>
@@ -229,50 +184,60 @@ include ('includes/head.html');
         </div>
     </div>
 
-    <!-- styling break -->
-    <div class="w3-black break"></div>
-
-    <!-- The Contact Section -->
-    <div class="w3-container w3-content w3-padding-64 shadow-lg p-3 mb-5 bg-white rounded" id="contact">
-        <h2 class="w3-wide w3-center">CONTACTS</h2>
-        <div class="w3-row w3-padding-32 w3-center">
-            <!--Left Side-->
-            <div class="w3-col m6 w3-large w3-margin-bottom">
-                <!-- Google Map insertion -->
-                <i class="fa fa-map-marker" id="google"></i>
-                <a
-                        href="https://goo.gl/maps/UEuiGpguDtXozPjN7"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                >
-                    24447 94th Ave S, Kent, WA, 98030 </a
-                ><br/>
-                <i class="fa fa-phone contactFont"></i> Phone:
-                253-852-4100<br/>
-                <i class="fa fa-envelope contactFont"> </i> Email:
-                mail@mail.com<br/>
-            </div>
-
-            <!--Right Side-->
-            <div class="w3-col m6 w3-large w3-margin-bottom">
-                <i class="fa fa-calendar contactFont"> </i>
-                Monday: 1:00pm to 4:00pm <br/>
-                Tuesday: 9:00am to 12:00 noon <br/>
-                Wednesday: 1:00pm to 4:00pm<br/>
-            </div>
-
-        </div>
-
-        <div class="mapouter w3-center w3-content ">
-            <div class="gmap_canvas">
-                <iframe width="400" height="200" id="gmap_canvas"
-                        src="https://maps.google.com/maps?q=24447%2094th%20Ave%20S%2C%20Kent%2C%20WA%2C%2098030&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                         ></iframe>
-            </div>
-        </div>
-    </div>
-
+<!-- The Footer Section -->
+<div class="w3-container w3-content w3-center w3-padding-64 shadow-lg mb-5 bg-white w3-black rounded" id="contact">
     <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-lg-4 footer-about">
+                        <h3 class="mb-5">Hours</h3>
+
+                        <p><i class="fa fa-calendar contactFont"> </i>
+                            Monday: 1:00pm to 4:00pm</p>
+                        <p>Tuesday: 9:00am to 12:00 noon</p>
+                        <p>Wednesday: 1:00pm to 4:00pm</p>
+
+                    </div>
+
+                    <div class="col-md-4 col-lg-4 footer-contact">
+                        <h3 class="mb-5">Contacts</h3>
+                        <!-- Google Map insertion -->
+                        <p><i class="fa fa-map-marker" id="google"></i>
+                            <a
+                                    href="https://goo.gl/maps/UEuiGpguDtXozPjN7"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                            >24447 94th Ave S, Kent, WA, 98030 </a></p>
+                        <p><i class="fa fa-phone contactFont"></i> Phone:<a href="tel:253-852-4100">253-852-4100</a></p>
+                        <p><i class="fa fa-envelope contactFont"> </i> Email:mail@mail.com</p>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3 footer-location">
+                        <h3 class="mb-3">Our Location</h3>
+                        <!--Google map-->
+                        <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 200px">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10806.156076848025!2d-122.216393!3d47.381915!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54905eaea6606e61%3A0x206815f453c0e48b!2s24447%2094th%20Ave%20S%2C%20Kent%2C%20WA%2098030!5e0!3m2!1sen!2sus!4v1605391186289!5m2!1sen!2sus"
+                                    width="300" height="150" style="border:0;" allowfullscreen="" aria-hidden="false"
+                                    tabindex="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 footer-menu">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+    <!-- Footer Temp -->
     <footer
             class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge"
     >
@@ -300,6 +265,5 @@ include ('includes/head.html');
     ></script>
     <script src="scripts/index.js"></script>
     <script src="scripts/zipCode.js"></script>
-</div>
 </body>
 </html>
